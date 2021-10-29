@@ -1,7 +1,8 @@
 # Cypress example
 
-Repository with example cypress configuration and sample test runs, may become a template later
+Repository with example cypress configuration and sample test runs, may become a template later. Made for a school assignment.
 
+This obviously doesn't work beacuse repository secrets aren't configured and I won't create a heroku app just for this, but you get the idea.
 
 ## Technologies
 
