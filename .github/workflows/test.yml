@@ -1,0 +1,48 @@
+name: CI
+
+on: [push]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Run Integration tests 🧪
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+
+      - name: Run Component tests 🧪
+        uses: cypress-io/github-action@v2
+        with:
+          headless: true
+          install: false
+          command: yarn cy:test-ct
+      
+      - name: Heroku login credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+
+      - name: Add Heroku remote
+        run: heroku git:remote --app $HEROKU_APP_NAME
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Push to Heroku
+        run: git push heroku master

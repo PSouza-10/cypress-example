@@ -1,0 +1,49 @@
+{
+  "name": "genshinlab",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev:client": "cd client  && vite",
+    "dev:server": "tsnd --transpile-only --respawn server/index.ts",
+    "cy:open": "cypress open",
+    "cy:open-ct": "cypress open-ct",
+    "cy:test": "cypress run",
+    "cy:test-ct": "cypress run-ct",
+    "build:client": "cd client && tsc && vite build --emptyOutDir",
+    "build:server": "cd server && tsc --build",
+    "build": "yarn build:server && yarn build:client",
+    "start": "node dist/index.js"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "@mantine/core": "^3.0.5",
+    "@mantine/dates": "^3.0.5",
+    "@mantine/dropzone": "^3.0.5",
+    "@mantine/hooks": "^3.0.5",
+    "@mantine/notifications": "^3.0.5",
+    "@mantine/rte": "^3.0.5",
+    "axios": "^0.23.0",
+    "dayjs": "^1.10.7",
+    "fastify": "^3.22.1",
+    "fastify-cors": "^6.0.2",
+    "fastify-static": "^4.4.2",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  },
+  "devDependencies": {
+    "@cypress/react": "^5.10.1",
+    "@cypress/vite-dev-server": "^2.2.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@vitejs/plugin-react": "^1.0.0",
+    "concurrently": "^6.3.0",
+    "cypress": "^8.6.0",
+    "nodemon": "^2.0.14",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.4"
+  },
+  "engines": {
+    "node": ">=14.16.1"
+  }
+}

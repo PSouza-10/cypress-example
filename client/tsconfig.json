@@ -1,0 +1,10 @@
+{
+    "extends" : "../tsconfig.json",
+    "compilerOptions" : {
+        "module" : "ESNext",
+        "strict": false,
+        "strictNullChecks": false
+    },
+    "exclude": ["**/*.test.{ts,tsx}"],
+    "include": ["./"]
+}

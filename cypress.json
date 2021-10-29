@@ -1,0 +1,12 @@
+{
+  "integration": {
+    "testFiles": "**/*.test.{ts}"
+  },
+
+  "componentFolder": "client/src",
+  "component": {
+    "componentFolder": "client/src",
+    "testFiles": "**/*test.{js,jsx,ts,tsx}"
+  },
+  "video": false
+}
